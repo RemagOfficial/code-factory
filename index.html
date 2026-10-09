@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Factory</title>
+  </head>
+  <body>
+    <div id="app">
+      <header id="topbar">
+        <div class="brand">
+          <span class="logo">&#9635;</span>
+          <h1>CODE&nbsp;FACTORY</h1>
+        </div>
+        <div class="controls">
+          <button id="run-btn" class="btn primary" title="Push your code to the factory (Ctrl+Enter)">&#8679; Push</button>
+          <button id="settings-btn" class="btn icon-btn" title="Settings" aria-label="Open settings">&#9881;</button>
+          <div id="char-counter" class="char-counter">0 / 0</div>
+        </div>
+        <div id="goal-hud" class="goal-hud"></div>
+      </header>
+
+      <main id="layout">
+        <section id="editor-pane" class="pane">
+          <div class="pane-title">Source&nbsp;&middot;&nbsp;Program</div>
+          <div id="editor" class="editor-host"></div>
+          <div id="error-list" class="error-list"></div>
+        </section>
+
+        <section id="factory-pane" class="pane">
+          <div class="pane-title">Factory&nbsp;&middot;&nbsp;Network</div>
+          <div id="graph-host" class="graph-host">
+            <svg id="graph" xmlns="http://www.w3.org/2000/svg"></svg>
+            <div id="deploy-status" class="deploy-status hidden"></div>
+          </div>
+          <div id="detail-panel" class="detail-panel"></div>
+        </section>
+
+        <section id="side-pane" class="pane">
+          <div class="pane-title">Stockpiles&nbsp;&middot;&nbsp;Variables</div>
+          <div id="stockpile-sheet" class="stockpile-sheet"></div>
+          <div id="research-section" class="research-block hidden">
+            <div class="pane-title">Research&nbsp;&middot;&nbsp;Upgrades</div>
+            <div id="research" class="research"></div>
+          </div>
+          <div class="pane-title">Production&nbsp;Goals</div>
+          <div id="goals" class="goals"></div>
+        </section>
+      </main>
+
+      <!-- Settings menu -->
+      <div id="settings-overlay" class="overlay hidden">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+          <div class="modal-head">
+            <h2 id="settings-title">Settings</h2>
+            <button id="settings-close" class="modal-close" aria-label="Close settings">&#10005;</button>
+          </div>
+          <div class="modal-body">
+            <div class="setting-row">
+              <div class="setting-info">
+                <div class="setting-name">Reset progress</div>
+                <div class="setting-desc">Tears down the running factory, zeroes all stockpiles and resets every goal. Your code stays in the editor.</div>
+              </div>
+              <button id="reset-progress-btn" class="btn danger">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destructive-action confirmation -->
+      <div id="confirm-overlay" class="overlay hidden">
+        <div class="modal confirm-modal" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+          <div class="confirm-icon">&#9888;</div>
+          <h2 id="confirm-title">Reset all progress?</h2>
+          <p id="confirm-text">This tears down your running factory, zeroes every stockpile and resets all goals. This cannot be undone.</p>
+          <div class="confirm-actions">
+            <button id="confirm-cancel" class="btn">Cancel</button>
+            <button id="confirm-ok" class="btn danger">Yes, reset everything</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
